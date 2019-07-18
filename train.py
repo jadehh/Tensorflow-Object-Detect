@@ -1,4 +1,12 @@
-﻿import functools
+﻿#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# 作者：Create on 2019/7/18 14:31 by jade
+# 邮箱：jadehh@live.com
+# 描述：目标检测训练文件
+# 最近修改：2019/7/18 14:31 modify by jade
+
+
+import functools
 import os
 import tensorflow as tf
 import json
@@ -6,7 +14,7 @@ from object_detection.builders import dataset_builder
 from object_detection.utils import config_util
 from object_detection.builders import model_builder
 from object_detection.legacy import trainer
-from jade.jade_tools import GetToday
+from jade.jade_tools import GetToday,GetRootPath
 from nets import *
 tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -73,6 +81,6 @@ def train_car(train_dir="models/faster_car_models",
 if __name__ == '__main__':
     day = GetToday()
     # train_dir = "/data/home/jdh/models/HandsModels/faster_rcnn_resnet101_hand2" + "_" + day
-    train_dir = "/home/jade/models/objectDetectionModels/faster_rcnn_resnet101_goods_"+GetToday()
-    pipeline_config_path = "/home/jade/pipeline/faster_rcnn_resnet101_sdfgoods.config"
+    train_dir = GetRootPath() + "models/objectDetectionModels/ssd_mobilenet_v2_hand_"+GetToday()
+    pipeline_config_path = GetRootPath() + "pipeline/ssd_mobilenet_v2_hand.config"
     train_car(train_dir,pipeline_config_path)
