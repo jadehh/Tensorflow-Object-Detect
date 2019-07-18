@@ -23,4 +23,12 @@ python tfrecordShow.py
 ### 5. 开始训练
 ```
 python train.py
+或者使用
+bash run.py (可以指定使用GPU的个数)
+```
+### 6. 预测
+[模型下载](http://192.168.1.200)
+```
+python predict.py
+
 ```
