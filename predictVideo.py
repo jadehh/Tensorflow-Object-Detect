@@ -7,15 +7,11 @@
 import argparse
 from jade import *
 from objects_model import ObjectModel
-import os
-import os.path as ops
 import cv2
-import tensorflow as tf
-import time
 
 paraser = argparse.ArgumentParser(description="Detect car")
 #genearl
-paraser.add_argument("--model_path",default="/home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/",help="path to load model")
+paraser.add_argument("--model_path",default="/home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/pb/ssd_mobilenet_v2_hand.pb",help="path to load model")
 paraser.add_argument("--label_path",default="/home/jade/label_map/hand.prototxt",help="path to labels")
 paraser.add_argument("--num_classes",default=1,help="the number of classes")
 paraser.add_argument("--gpu_memory_fraction",default=0.8,help="the memory of gpu")

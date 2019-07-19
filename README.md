@@ -37,7 +37,9 @@ python predict.py
 ```
 python convertToPB.py \
     --input_type image_tensor \
+    --input_shape 1,300,300,3 \
     --pipeline_config_path /home/jade/pipeline/ssd_mobilenet_v2_hand.config \
-    --trained_checkpoint_prefix /home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/model.ckpt-1819 \
-    --output_directory /home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/
+    --trained_checkpoint_prefix /home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/model.ckpt-56796 \
+    --output_directory /home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/pb/
 ```
+
