@@ -286,10 +286,10 @@ def get_model_filenames(model_dir):
         raise ValueError('No meta file found in the model directory (%s)' % model_dir)
     elif len(meta_files)>1:
         print("restore the last model")
-    meta_file = meta_files[0]
     ckpt = tf.train.get_checkpoint_state(model_dir)
     if ckpt and ckpt.model_checkpoint_path:
         ckpt_file = os.path.basename(ckpt.model_checkpoint_path)
+        meta_file = ckpt_file + ".meta"
         return meta_file, ckpt_file
 
     meta_files = [s for s in files if '.ckpt' in s]

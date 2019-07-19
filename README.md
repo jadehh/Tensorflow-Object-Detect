@@ -32,3 +32,12 @@ bash run.py (可以指定使用GPU的个数)
 python predict.py
 
 ```
+
+### 7. 模型转换 ckpt 转 pb
+```
+python convertToPB.py \
+    --input_type image_tensor \
+    --pipeline_config_path /home/jade/pipeline/ssd_mobilenet_v2_hand.config \
+    --trained_checkpoint_prefix /home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/model.ckpt-1819 \
+    --output_directory /home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/
+```
