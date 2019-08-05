@@ -10,7 +10,7 @@ import io
 from PIL import Image
 from jade import *
 
-def tfrecords_show(tfrecord_path):
+def voc_tfrecords_show(tfrecord_path):
     categories,_ = ReadProTxt("/home/jade/label_map/hand.prototxt")
     with tf.Session() as sess:
         example = tf.train.Example()

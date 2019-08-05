@@ -9,7 +9,9 @@ python createDataset.py
 ### 3. TFRecord的验证
 ```
 python tfrecordShow.py
+
 ```
+数据集下载 [hand.tfrecord]()
 ### 4. 制作piplineconfig文件
 ```
 主要修改几个地方
@@ -20,6 +22,7 @@ python tfrecordShow.py
 5. label_map_path
 需要注意的是当训练SSD MobilenetV2 会报错，需要将数据增强的方法注释掉
 ```
+piplineconfig 下载地址为 [ssd_mobilenet_v2_hand.config](https://pan.baidu.com/s/1PePTECFR7Ts_kdLYEUW9PQ) (提取码为86hz)
 ### 5. 开始训练
 ```
 python train.py

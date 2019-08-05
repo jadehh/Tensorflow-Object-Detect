@@ -81,6 +81,6 @@ def train_car(train_dir="models/faster_car_models",
 if __name__ == '__main__':
     day = GetToday()
     # train_dir = "/data/home/jdh/models/HandsModels/faster_rcnn_resnet101_hand2" + "_" + day
-    train_dir = GetRootPath() + "Models/objectDetectionModels/ssd_mobilenet_v2_hand_"+GetToday()
-    pipeline_config_path = GetRootPath() + "pipeline/ssd_mobilenet_v2_hand.config"
+    train_dir = GetRootPath() + "Models/objectDetectionModels/ssd_mobilenet_v1_hand_"+GetToday()
+    pipeline_config_path = GetRootPath() + "pipeline/ssd_mobilenet_v1_hand.config"
     train_car(train_dir,pipeline_config_path)
