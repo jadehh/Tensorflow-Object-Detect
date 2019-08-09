@@ -2,6 +2,13 @@
 ## tensorflow 目标检测
 ### 1. 安装tensorflow 的 object_detection
 [安装地址](https://github.com/tensorflow/models) 
+```
+cd research/
+python setup.py install
+cd slim/
+python setup.py install
+```
+
 ### 2. 制作TFRecord数据集
 ```
 python createDataset.py
@@ -41,8 +48,8 @@ python predict.py
 python convertToPB.py \
     --input_type image_tensor \
     --input_shape 1,300,300,3 \
-    --pipeline_config_path /home/jade/pipeline/ssd_mobilenet_v2_hand.config \
-    --trained_checkpoint_prefix /home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/model.ckpt-56796 \
-    --output_directory /home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/pb/
+    --pipeline_config_path /home/jade/pipeline/ssd_mobilenet_v1_hand.config \
+    --trained_checkpoint_prefix /home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/model.ckpt-41568 \
+    --output_directory /home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/pb/
 ```
 

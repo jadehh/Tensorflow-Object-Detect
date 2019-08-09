@@ -9,16 +9,27 @@ import tensorflow as tf
 from google.protobuf import text_format
 from object_detection import exporter
 from object_detection.protos import pipeline_pb2
-
+from jade import *
 slim = tf.contrib.slim
 flags = tf.app.flags
 
+"""
+python convertToPB.py \
+    --input_type image_tensor \
+    --input_shape 1,300,300,3 \
+    --pipeline_config_path /home/jade/pipeline/ssd_mobilenet_v1_hand.config \
+    --trained_checkpoint_prefix /home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/model.ckpt-41568 \
+    --output_directory /home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/pb/
 
+"""
+pipline_config_path = "/home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/pipeline.config"
+train_checkpoint_prefix = "/home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/model.ckpt-41568"
 
+output_directory = os.path.join(GetPreviousDir(train_checkpoint_prefix),"pb/")
 flags.DEFINE_string('input_type', 'image_tensor', 'Type of input node. Can be '
                     'one of [`image_tensor`, `encoded_image_string_tensor`, '
                     '`tf_example`]')
-flags.DEFINE_string('input_shape', None,
+flags.DEFINE_string('input_shape', '-1,300,300,3',
                     'If input_type is `image_tensor`, this can explicitly set '
                     'the shape of this input tensor to a fixed size. The '
                     'dimensions are to be provided as a comma-separated list '
@@ -26,13 +37,13 @@ flags.DEFINE_string('input_shape', None,
                     'dimensions. If not specified, for an `image_tensor, the '
                     'default shape will be partially specified as '
                     '`[None, None, None, 3]`.')
-flags.DEFINE_string('pipeline_config_path', None,
+flags.DEFINE_string('pipeline_config_path', pipline_config_path,
                     'Path to a pipeline_pb2.TrainEvalPipelineConfig config '
                     'file.')
-flags.DEFINE_string('trained_checkpoint_prefix', None,
+flags.DEFINE_string('trained_checkpoint_prefix', train_checkpoint_prefix,
                     'Path to trained checkpoint, typically of the form '
                     'path/to/model.ckpt')
-flags.DEFINE_string('output_directory', None, 'Path to write outputs.')
+flags.DEFINE_string('output_directory', output_directory, 'Path to write outputs.')
 flags.DEFINE_string('config_override', '',
                     'pipeline_pb2.TrainEvalPipelineConfig '
                     'text proto to override pipeline_config_path.')
