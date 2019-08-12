@@ -11,7 +11,7 @@ from PIL import Image
 from jade import *
 
 def voc_tfrecords_show(tfrecord_path):
-    categories,_ = ReadProTxt("/home/jade/label_map/hand.prototxt")
+    categories,_ = ReadProTxt("/home/jade/Data/Hand_Gesture/hand_gesture.prototxt")
     with tf.Session() as sess:
         example = tf.train.Example()
         # train_records 表示训练的tfrecords文件的路径
@@ -44,16 +44,15 @@ def voc_tfrecords_show(tfrecord_path):
             label_texts = []
             image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
             for i in range(len(xmin)):
-                if labels[i] != 0:
-                    print(labels[i])
-                    bboxes.append(
+                print(labels[i])
+                bboxes.append(
                         (xmin[i] * image_width, ymin[i] * image_height, xmax[i] * image_width, ymax[i] * image_height))
-                    scores.append(1)
-                    label_texts.append(categories[labels[i]]["display_name"])
+                scores.append(1)
+                label_texts.append(categories[labels[i]]["display_name"])
 
                 #label_texts.append("good")
             print("**********************")
-            CVShowBoxes(image,bboxes,label_texts,labels,scores=scores,waitkey=0)
+            # CVShowBoxes(image,bboxes,label_texts,labels,scores=scores,waitkey=0)
 if __name__ == '__main__':
-    tfrecords_path = "/home/jade/Data/HAND/Tfrecords/hand_train.tfrecord"
-    tfrecords_show(tfrecords_path)
+    tfrecords_path = "/home/jade/Data/Hand_Gesture/Tfrecords/hand_gesture_train.tfrecord"
+    voc_tfrecords_show(tfrecords_path)

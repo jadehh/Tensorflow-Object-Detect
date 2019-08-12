@@ -15,7 +15,7 @@ import time
 
 paraser = argparse.ArgumentParser(description="Detect car")
 #genearl
-paraser.add_argument("--model_path",default="/home/jade/Models/objectDetectionModels/ssd_mobilenet_v2_hand_2019-07-18/pb/ssd_mobilenet_v2_hand_pb/frozen_inference_graph.pb",help="path to load model")
+paraser.add_argument("--model_path",default="/home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05",help="path to load model")
 paraser.add_argument("--label_path",default="/home/jade/label_map/hand.prototxt",help="path to labels")
 paraser.add_argument("--num_classes",default=1,help="the number of classes")
 paraser.add_argument("--gpu_memory_fraction",default=0.8,help="the memory of gpu")

@@ -6,19 +6,18 @@
 # 最近修改：2019/7/18 14:31 modify by jade
 
 import tensorflow as tf
-from jade.create_voc_tf_record import main
-from jade import *
+from jade.jadeTFRecords import main
 
 
 def CreatTF():
     flags = tf.app.flags
-    flags.DEFINE_string('data_dir', '/home/jade/Data/HAND/', 'Root directory to raw PASCAL VOC dataset.')
+    flags.DEFINE_string('data_dir', '/home/jade/Data/Hand_Gesture/', 'Root directory to raw PASCAL VOC dataset.')
     flags.DEFINE_string('set', 'train', 'Convert training set, validation set or '
                                         'merged set.')
-    flags.DEFINE_string('output_path', '/home/jade/Data/HAND/Tfrecords/hand_train.tfrecord', 'Path to output TFRecord')
-    flags.DEFINE_string('label_map_path', "/home/jade/Data/HAND/Hand.prototxt",
+    flags.DEFINE_string('output_path', '/home/jade/Data/Hand_Gesture/Tfrecords/hand_gesture_train.tfrecord', 'Path to output TFRecord')
+    flags.DEFINE_string('label_map_path', "/home/jade/Data/Hand_Gesture/hand_gesture.prototxt",
                         'Path to label map proto')
-    flags.DEFINE_list('years',  ["DeepFreeze_Hand"],
+    flags.DEFINE_list('years',  ["UA_Handgesture"],
                         'Path to label map proto')
     FLAGS = flags.FLAGS
     main(FLAGS)

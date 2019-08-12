@@ -23,7 +23,7 @@ python convertToPB.py \
 
 """
 pipline_config_path = "/home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/pipeline.config"
-train_checkpoint_prefix = "/home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/model.ckpt-41568"
+train_checkpoint_prefix = "/home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/model.ckpt-200000"
 
 output_directory = os.path.join(GetPreviousDir(train_checkpoint_prefix),"pb/")
 flags.DEFINE_string('input_type', 'image_tensor', 'Type of input node. Can be '
