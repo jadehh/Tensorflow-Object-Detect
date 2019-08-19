@@ -6,32 +6,23 @@
 # 最近修改：2019/7/18 14:31 modify by jade
 
 import tensorflow as tf
-from jade.jadeTFRecords import main
-
+from datasetopeation.jadeVocTFRecord import CreateVOCTFRecords
+import os
+import argparse
+from jade import *
 
 def CreatTF():
-    flags = tf.app.flags
-    flags.DEFINE_string('data_dir', '/home/jade/Data/Hand_Gesture/', 'Root directory to raw PASCAL VOC dataset.')
-    flags.DEFINE_string('set', 'train', 'Convert training set, validation set or '
-                                        'merged set.')
-    flags.DEFINE_string('output_path', '/home/jade/Data/Hand_Gesture/Tfrecords/hand_gesture_train.tfrecord', 'Path to output TFRecord')
-    flags.DEFINE_string('label_map_path', "/home/jade/Data/Hand_Gesture/hand_gesture.prototxt",
-                        'Path to label map proto')
-    flags.DEFINE_list('years',  ["UA_Handgesture"],
-                        'Path to label map proto')
-    FLAGS = flags.FLAGS
-    main(FLAGS)
-
-
-def CutVoc():
-    CutImagesWithBox("/home/jade/Data/UA+/worksite_2019-04-30_d6",savedir="/home/jade/Data/UA+/worksite_2019-04-30_d6_cut",use_chinese_name=False)
-
-
-
-def restoreVoc():
-    RestoreCutImageWithVoc("/home/jade/Data/UA+/worksite_2019-04-30_d7","/home/jade/Data/UA+/worksite_2019-04-30_d7_cut")
-
-
+    years = []
+    for year in os.listdir("/home/jade/Data/FaceGesture/"):
+        if year != "tfrecords" and os.path.isdir(os.path.join("/home/jade/Data/FaceGesture/",year)):
+            years.append(year)
+    paraser = argparse.ArgumentParser(description="Create TFRecords")
+    paraser.add_argument("--data_dir",default="/home/jade/Data/FaceGesture/",help="")
+    paraser.add_argument("--output_path",default="/home/jade/Data/FaceGesture/tfrecords/hand_gesture_train_"+GetToday()+".tfrecord",help="")
+    paraser.add_argument("--proto_txt_path",default="/home/jade/Data/FaceGesture/face_gesture.prototxt",help="")
+    paraser.add_argument("--years",type=list,default=years,help="")
+    args = paraser.parse_args()
+    CreateVOCTFRecords(args)
 if __name__ == '__main__':
     # CreateVOCDataset("/home/jade/Data/HAND/DeepFreeze_Hand","DeepFreeze_Hand")
     CreatTF()

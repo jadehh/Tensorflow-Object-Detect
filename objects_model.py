@@ -287,6 +287,7 @@ def get_model_filenames(model_dir):
     elif len(meta_files)>1:
         print("restore the last model")
     ckpt = tf.train.get_checkpoint_state(model_dir)
+    meta_file = ""
     if ckpt and ckpt.model_checkpoint_path:
         ckpt_file = os.path.basename(ckpt.model_checkpoint_path)
         meta_file = ckpt_file + ".meta"
@@ -651,7 +652,7 @@ if __name__ == '__main__':
         stat_time = time.time()
         img = cv2.imread(ops.join(img_path, img_name))
         car_out_dict = car_model.predict(img)
-        img, plate_img = car_model.cut_img(car_out_dict, img, select_threshold=0.9, car_detect=True, )
+        img, plate_img = car_model.cut_img(car_out_dict, img, select_threshold=0.2, car_detect=True, )
         print("detect car and plate use {} s".format(time.time() - stat_time))
         cv2.imshow("car", img)
         cv2.waitKey(1000)

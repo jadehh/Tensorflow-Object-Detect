@@ -52,7 +52,7 @@ def voc_tfrecords_show(tfrecord_path):
 
                 #label_texts.append("good")
             print("**********************")
-            # CVShowBoxes(image,bboxes,label_texts,labels,scores=scores,waitkey=0)
+            CVShowBoxes(image,bboxes,label_texts,labels,scores=scores,waitkey=0)
 if __name__ == '__main__':
-    tfrecords_path = "/home/jade/Data/Hand_Gesture/Tfrecords/hand_gesture_train.tfrecord"
+    tfrecords_path = "/home/jade/Data/FaceGesture/tfrecords/hand_gesture_train_2019-08-16.tfrecord"
     voc_tfrecords_show(tfrecords_path)
