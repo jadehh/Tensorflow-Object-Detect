@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 # 作者：Create on 2019/7/18 17:34 by jade
 # 邮箱：jadehh@live.com
-# 描述：TODO
+# 描述：ckpt文件转pb文件
 # 最近修改：2019/7/18 17:34 modify by jade
 
 import tensorflow as tf
@@ -22,8 +22,8 @@ python convertToPB.py \
     --output_directory /home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/pb/
 
 """
-pipline_config_path = "/home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/pipeline.config"
-train_checkpoint_prefix = "/home/jade/Models/objectDetectionModels/ssd_mobilenet_v1_hand_2019-08-05/model.ckpt-200000"
+pipline_config_path = "/home/jade/Models/GestureFaceModels/ssd_mobilenet_v1_gesture_face_2019-08-21/pipeline.config"
+train_checkpoint_prefix = "/home/jade/Models/GestureFaceModels/ssd_mobilenet_v1_gesture_face_2019-08-21/model.ckpt-200000"
 
 output_directory = os.path.join(GetPreviousDir(train_checkpoint_prefix),"pb/")
 flags.DEFINE_string('input_type', 'image_tensor', 'Type of input node. Can be '
