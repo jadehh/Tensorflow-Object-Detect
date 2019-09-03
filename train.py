@@ -15,7 +15,6 @@ from object_detection.utils import config_util
 from object_detection.builders import model_builder
 from object_detection.legacy import trainer
 from jade.jade_tools import GetToday,GetRootPath
-from nets import *
 tf.logging.set_verbosity(tf.logging.INFO)
 
 
