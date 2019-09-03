@@ -5,27 +5,29 @@
 # 描述：制作数据集
 # 最近修改：2019/7/18 14:31 modify by jade
 
-import tensorflow as tf
 from datasetopeation.jadeVocTFRecord import CreateVOCTFRecords
-import os
 import argparse
 from jade import *
 
 def CreatTF():
     years = []
-    for year in os.listdir("/home/jade/Data/FaceGesture/"):
-        if year != "tfrecords" and os.path.isdir(os.path.join("/home/jade/Data/FaceGesture/",year)):
+    root_dir = "/home/jade/Data/GestureFace/"
+    for year in os.listdir(root_dir):
+        if year != "tfrecords" and os.path.isdir(os.path.join(root_dir,year)):
             years.append(year)
+            #dataset_name = os.path.join(root_dir,year)
+            #CreateVOCDataset(dataset_name, "FaceGesture")
     paraser = argparse.ArgumentParser(description="Create TFRecords")
-    paraser.add_argument("--data_dir",default="/home/jade/Data/FaceGesture/",help="")
-    paraser.add_argument("--output_path",default="/home/jade/Data/FaceGesture/tfrecords/hand_gesture_train_"+GetToday()+".tfrecord",help="")
-    paraser.add_argument("--proto_txt_path",default="/home/jade/Data/FaceGesture/face_gesture.prototxt",help="")
+    paraser.add_argument("--data_dir",default=root_dir,help="")
+    paraser.add_argument("--output_path",default=root_dir +"/tfrecords/face_train_"+GetToday()+".tfrecord",help="")
+    paraser.add_argument("--proto_txt_path",default=root_dir + "/face.prototxt",help="")
     paraser.add_argument("--years",type=list,default=years,help="")
     args = paraser.parse_args()
     CreateVOCTFRecords(args)
 if __name__ == '__main__':
-    # CreateVOCDataset("/home/jade/Data/HAND/DeepFreeze_Hand","DeepFreeze_Hand")
+
     CreatTF()
+    #VOCTFRecordShow("/home/jade/Data/GestureFace/tfrecords/gesture_hand_train_2019-08-21.tfrecord","/home/jade/Data/GestureFace/gesture_face.prototxt")
     #CutVoc()
     #CreateVOCDataset("/home/jade/Data/StaticDeepFreeze/2019-04-10","2019-04-10")
     # restoreVoc()
