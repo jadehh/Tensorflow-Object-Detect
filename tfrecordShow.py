@@ -2,16 +2,14 @@
 # -*- coding: utf-8 -*- 
 # 作者：Create on 2019/7/18 15:57 by jade
 # 邮箱：jadehh@live.com
-# 描述：TODO
+# 描述：TFRecords文件可视化
 # 最近修改：2019/7/18 15:57 modify by jade
 import tensorflow as tf
-import numpy as np
 import io
-from PIL import Image
 from jade import *
 
 def voc_tfrecords_show(tfrecord_path):
-    categories,_ = ReadProTxt("/home/jade/Data/Hand_Gesture/hand_gesture.prototxt")
+    categories,_ = ReadProTxt("/home/jade/prototxt/face_gesture.prototxt")
     with tf.Session() as sess:
         example = tf.train.Example()
         # train_records 表示训练的tfrecords文件的路径
@@ -54,5 +52,5 @@ def voc_tfrecords_show(tfrecord_path):
             print("**********************")
             CVShowBoxes(image,bboxes,label_texts,labels,scores=scores,waitkey=0)
 if __name__ == '__main__':
-    tfrecords_path = "/home/jade/Data/FaceGesture/tfrecords/hand_gesture_train_2019-08-16.tfrecord"
+    tfrecords_path = "/home/jade/Data/FaceGesture/tfrecords/face_gesture_train_2019-08-21.tfrecord"
     voc_tfrecords_show(tfrecords_path)
