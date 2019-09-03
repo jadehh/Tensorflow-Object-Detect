@@ -1,22 +1,21 @@
-#coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# 作者：Create on 2019/7/18 14:31 by jade
+# 邮箱：jadehh@live.com
+# 描述：目标检测类
+# 最近修改：2019/7/18 14:31 modify by jade
 import tensorflow as tf
-import numpy as np
 from jade import *
 from object_detection.utils import ops as utils_ops
-from object_detection.utils import label_map_util
-from tensorflow.python.training import saver as saver_lib
 from object_detection.utils import visualization_utils as vis_util
 import cv2
 import os
 import os.path as ops
 import re
-import tensorflow.gfile as gfile
 import time
-from tensorflow.python.client import session
 from object_detection.builders import model_builder
 from object_detection.protos import pipeline_pb2
 from google.protobuf import text_format
-from tensorflow.python.client import session
 from object_detection.core import standard_fields as fields
 from tensorflow.python.training import saver as saver_lib
 slim = tf.contrib.slim
