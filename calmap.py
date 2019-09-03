@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 # 作者：2019/8/9 by jade
 # 邮箱：jadehh@live.com
-# 描述：TODO
+# 描述：计算Map方法
 # 最近修改：2019/8/9  上午9:49 modify by jade
 
 from jade.voc0712 import VOCDetection,AnnotationTransform
